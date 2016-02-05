@@ -66,9 +66,11 @@ public class FalconAsynchronousListener {
                     java.sql.Timestamp currTimeStamp = new java.sql.Timestamp(date.getTime());
 
                     // Log the Message (just the important parts)
+                    //status, id, startTime, endTime, nominalTime, user
+                    //entityName, feedNames, feedInstancePath, workflowId, runId, nominalTime, timeStamp, brokerUrl, brokerImplClass, entityType, operation, logFile, topicName, status, brokerTTL
                     PrintWriter out = new PrintWriter(new FileWriter(outputFile, true));
                     try{
-                        out.println("Time: " + currTimeStamp
+                        out.println("Time Received: " + currTimeStamp
                                 + ", Entity Name: " + message.getString("entityName")
                                 + ", Status: " + message.getString("status")
                                 + ", Operation: " + message.getString("operation")

@@ -20,6 +20,16 @@ import java.util.Date;
 
 public class OozieFetcher {
 
+
+    /**
+     * @param falconID
+     * @param oozieClient
+     * @return
+     * @throws OozieClientException
+     *
+     * This method receives a falconID provided by a JMS message, and an Oozie Client instance. It provides
+     * a subworkflow ID (the true ID of the workflow you give to falcon).
+     */
     static String getSubworkflowID(String falconID, OozieClient oozieClient) throws OozieClientException {
 
         String id = "";
@@ -34,9 +44,18 @@ public class OozieFetcher {
 
     }
 
+    /**
+     * @param subworkflowID
+     * @param oozieClient
+     * @return
+     * @throws OozieClientException
+     *
+     * This method receives a subworkflowID (any ID that has actions is sufficient) and an Oozie Client instance.
+     * It provides the duration of said subworkflow. Original use case is for attaching to a JMS message record.
+     */
     static String getSubworkflowDuration(String subworkflowID, OozieClient oozieClient) throws OozieClientException {
 
-        String duration = "poop";
+        String duration = "";
 
         //Establish PeriodFormatter for Timestamp Output
         PeriodFormatter daysHoursMinutes = new PeriodFormatterBuilder()

@@ -26,7 +26,7 @@ public class FalconAsynchronousListener {
     static String topic = "FALCON.ENTITY.TOPIC";
     static String host = "tcp://myhadoopcluster004:61616";
     static String outputFile = "falcon-jms.log";
-    static String oozieHost = "http://lxhdpmastdev002:11000/oozie";
+    static String oozieHost = "http://myhadoopcluster002:11000/oozie";
 
 
     // Create Connection Variables

@@ -41,6 +41,9 @@ public class FalconAsynchronousListener {
         System.out.println("Connection Opened to " + connectionFactory.getBrokerURL() + " on: " + new java.util.Date() + ", listening for topic " + topic + ".");
         System.out.println("Messages will be written to local file: " + outputFile);
 
+        // Create an Oozie Session
+        final OozieClient oozieClient = new OozieClient(oozieHost);
+
         // Create a Session
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
@@ -64,7 +67,6 @@ public class FalconAsynchronousListener {
 
                     System.out.println("Message Received: " + messageText);
                     MapMessage message = (MapMessage) messageRaw;
-                    OozieClient oozieClient = new OozieClient("http://lxhdpmastdev002:11000/oozie");
 
                     // Setup Timestamp for Attaching to Message Output
                     java.util.Date date = new java.util.Date(message.getJMSTimestamp());
@@ -76,6 +78,9 @@ public class FalconAsynchronousListener {
                     String feedPaths = message.getString("feedInstancePaths");
                     String parentWorkflow = message.getString("workflowId");
                     String runID = message.getString("runId");
+                    String log = message.getString("logFile");
+                    String topicName = message.getString("topicName");
+                    String brokerTTL = message.getString("brokerTTL");
 
                     String subworkflow = "";
                     String duration = "";
@@ -86,9 +91,11 @@ public class FalconAsynchronousListener {
                         duration = OozieFetcher.getSubworkflowDuration(subworkflow, oozieClient);
                     }
 
-                    // Log the Message (just the important parts)
-                    //status, id, startTime, endTime, nominalTime, user
-                    //entityName, feedNames, feedInstancePath, workflowId, runId, nominalTime, timeStamp, brokerUrl, brokerImplClass, entityType, operation, logFile, topicName, status, brokerTTL
+                    // Log the Message Contents (its important parts)
+                    // SUPPORTED VALUES:
+                    // entityName, feedNames, feedInstancePath, workflowId, runId,
+                    // nominalTime, timeStamp, brokerUrl, brokerImplClass, entityType,
+                    // operation, logFile, topicName, status, brokerTTL
                     PrintWriter out = new PrintWriter(new FileWriter(outputFile, true));
                     try{
                         out.println("Time: " + currTimeStamp
@@ -99,7 +106,11 @@ public class FalconAsynchronousListener {
                                 + ", JobID: " + parentWorkflow
                                 + ", RunID: " + runID
                                 + ", Sub-Workflow: " + subworkflow
-                                + ", Duration: " + duration);
+                                + ", Duration: " + duration
+                                + ", Log: " + log
+                                + ", Topic: " + topicName
+                                + ", Broker: " + brokerTTL
+                        );
                         out.close();
 
                     } catch (NullPointerException n) {

@@ -1,7 +1,16 @@
 ![alt tag](http://hortonworks.com/wp-content/uploads/2013/09/falcon-logo.png) 
 Pigeon - An Apache Falcon JMS Listener
 =================
-Pigeon is an open source, lightweight Java client that asynchronously listens for and fetches JMS messages sent by Apache Falcon via an MQ service. Built for use with Apache Hadoop and Apache Falcon. Ideal if you're using Falcon to schedule jobs on Hadoop, and want a monitoring solution.
+Pigeon is an open source, lightweight Java client that asynchronously listens for and fetches JMS messages sent by Apache Falcon via an MQ service. Built for use with Apache Hadoop, Apache Falcon and Apache Oozie. Ideal if you're using Falcon to schedule jobs on Hadoop, and want a monitoring solution or some documented history of your jobs.
+
+Version 1.2 - Oozie Integration
+=================
+Falcon JMS messages provide good information, but not everything you'd want. There are a few key pieces lacking. That's been resolved in this latest push:
+- added Oozie API integration
+  - automatically requests the sub-workflow ID of your Falcon job and logs it with the msg
+  - automatically requests the start/end times of your sub-workflow, calculates the duration, and logs it with the msg
+  - these features allow your messages to provide the info naturally desired with a record of your job's completion
+  - to start using it, you simply need to provide the URI/path to your Oozie service (usually looks like        mycluster004.company.com:11000/oozie
 
 How it Works
 =================
@@ -11,7 +20,7 @@ Because this retrieves alerts for every job that runs on the cluster, Pigeon can
 
 How to Use It
 =================
-Easy. Pull this code (it's a Maven project). Change the hostname variable to the server where Falcon is installed, and change the filename variable to give Pigeon a text file to write to. Package the jar and place it on your cluster (can be an edge node). Run it with a hadoop jar command and presto! It will write results to a file in that directory.
+Easy. Pull this code (it's a Maven project). Change the hostname variable to the server where Falcon is installed, and change the filename variable to give Pigeon a text file to write to. As of version 1.2, you can now provide an Oozie address to take advantage of Oozie features (see above). Package the jar and place it on your cluster (can be an edge node). Run it with a hadoop jar command and presto! It will write results to a file in that directory.
 
 Contact Me
 =================

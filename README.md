@@ -14,7 +14,7 @@ Falcon JMS messages provide good information, but not everything you'd want. The
 
 How it Works
 =================
-Falcon has workflows. Those workflows send JMS message alerts upon completion to indicate their success or failure, and other cross-referential information that's very good for monitoring and debugging. Pigeon simply retrieves those alerts and writes them to a file. I use this on my Hadoop team to power a monitoring dashboard.
+Falcon has workflows. Those workflows send JMS message alerts upon completion to indicate their success or failure, and other cross-referential information that's very good for monitoring and debugging. Pigeon, when used as a background service, simply retrieves those alerts and writes them to a file. I use this on my Hadoop team to power a monitoring dashboard.
 
 Because this retrieves alerts for every job that runs on the cluster, Pigeon can easily build a job history and lineage on your Hadoop cluster. Give it a shot if you like!
 

@@ -4,7 +4,7 @@
   <groupId>com.hadoopsters.jms</groupId>
   <artifactId>FalconJMSListener</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0.2</version>
   <name>FalconJMSListener</name>
   <dependencies>
 

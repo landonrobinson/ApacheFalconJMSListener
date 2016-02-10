@@ -3,7 +3,7 @@ Pigeon - An Apache Falcon JMS Listener
 =================
 Pigeon is an open source, lightweight Java client that asynchronously listens for and fetches JMS messages sent by Apache Falcon via an MQ service. Built for use with Apache Hadoop, Apache Falcon and Apache Oozie. Ideal if you're using Falcon to schedule jobs on Hadoop, and want a monitoring solution or some documented history of your jobs.
 
-Version 1.2 - Oozie Integration
+Version 1.0.2 - Oozie Integration
 =================
 Falcon JMS messages provide good information, but not everything you'd want. There are a few key pieces lacking. That's been resolved in this latest push:
 - added Oozie API integration

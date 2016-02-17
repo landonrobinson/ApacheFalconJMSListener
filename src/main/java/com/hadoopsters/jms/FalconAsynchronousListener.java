@@ -128,6 +128,7 @@ public class FalconAsynchronousListener {
                     out.close();
 
                     //Handle JMS Exceptions from MapMessages and IO Exceptions from File Writing
+                    //And OozieClientExceptions for any job query errors
                 } catch (JMSException jmse){
                     jmse.printStackTrace();
                 } catch (IOException e) {

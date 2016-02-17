@@ -44,6 +44,25 @@ public class OozieFetcher {
 
     }
 
+    static Date getStartTime(String falconID, OozieClient oozieClient) throws OozieClientException{
+        String id = "";
+        Date startTime;
+        startTime = oozieClient.getJobInfo(falconID).getStartTime();
+
+        return startTime;
+
+    }
+
+    static Date getEndTime(String falconID, OozieClient oozieClient) throws OozieClientException{
+        String id = "";
+
+        Date endTime;
+        endTime = oozieClient.getJobInfo(falconID).getEndTime();
+
+        return endTime;
+
+    }
+
     /**
      * @param subworkflowID
      * @param oozieClient

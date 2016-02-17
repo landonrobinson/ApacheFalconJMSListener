@@ -28,7 +28,6 @@ public class FalconAsynchronousListener {
     static String outputFile = "falcon-jms.log";
     static String oozieHost = "http://myhadoopcluster002:11000/oozie";
 
-
     // Create Connection Variables
     static ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(host);
     static Connection connection;

@@ -22,7 +22,7 @@ How to Use It
 =================
 Easy. Pull this code (it's a Maven project). Change the hostname variable to the server where Falcon is installed, and change the filename variable to give Pigeon a text file to write to. As of version 1.2, you can now provide an Oozie address to take advantage of Oozie features (see above). Package the jar and place it on your cluster (can be an edge node). Run it with a hadoop jar command and presto! It will write results to a file in that directory.
 
-nohup hadoop jar FalconJMSListener-1.0-SNAPSHOT-job.jar com.hadoopsters.jms.FalconAsynchronousListener &
+<pre>nohup hadoop jar FalconJMSListener-1.0-SNAPSHOT-job.jar com.hadoopsters.jms.FalconAsynchronousListener &</pre>
 
 Contact Me
 =================
